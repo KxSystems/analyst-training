@@ -5,7 +5,7 @@ First, delete the table from memory, and note that it is really gone.
 
 ```q
 
-    delete cells from `.;
+    delete ... from `.;
     tables[];
     
     // `symbol$()
@@ -21,7 +21,6 @@ are no entries in the table, everything ran without error.
 
 ```q
 
-    CellData[::; ::]
     
     // name type| error
     // ---------| -----
@@ -42,7 +41,6 @@ Display the function to read possible formats for inputs and outputs.
 
 ```q
     
-    CellData
     
 ```
 
@@ -52,10 +50,6 @@ For example,
 
     // Pointing an input to a new csv
     
-    CellData[enlist[`cells_dirty]!enlist `:cells_dirty.csv; ::]
-    
     // Pointing an input to a new IO configuration (including schema)
-    
-    CellData[enlist[`cells_dirty]!enlist CellsDirty[]; ::]
 
 ```

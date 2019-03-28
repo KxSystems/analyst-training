@@ -2,4 +2,4 @@
 
 - Right click to bring context menu options
 - Menus at the top provide hotkeys
-- Help > Analyst Function Reference for public Analyst libraries
+- Help > Function Reference for public libraries
