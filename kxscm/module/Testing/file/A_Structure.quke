@@ -1,0 +1,37 @@
+feature MyAPI
+    
+    before
+        code
+        
+    before each
+        code
+     
+    after
+        code
+        
+    after each
+        code    
+        
+        
+    should have behaviour A
+        expect success when given empty state
+            code
+            
+        expect success when given state with a single item
+            code
+            
+        expect success when given multiple items in state
+            code
+            
+            
+    should have behaviour B
+        expect things from behaviour B
+            code
+               
+    should have behaviour B
+        expect things from behaviour B
+            code
+            
+    should have behaviour B
+        expect things from behaviour B
+            code

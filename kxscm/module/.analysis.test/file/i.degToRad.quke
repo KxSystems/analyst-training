@@ -1,0 +1,22 @@
+feature i.degToRad
+    
+    should convert particulars
+        
+        expect 0 to be 0
+            
+            0 = i.degToRad 0
+            
+        expect 180 to be pi
+            
+            PI = i.degToRad 180
+            
+            
+            
+     property inverse
+        
+        .qch.check .qch.forall [ .qch.g.int[] ] { 
+            x = i.degToRad[x] * 180 % PI 
+            }   
+        
+        
+        

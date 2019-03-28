@@ -1,0 +1,6 @@
+feature Count
+   should return the count of its input
+       xexpect count on an atom to return 1
+           1 ~ 2
+       expect count of 1 drop list to return n - 1
+           2 ~ 3

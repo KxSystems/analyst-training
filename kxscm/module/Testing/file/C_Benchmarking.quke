@@ -1,0 +1,24 @@
+feature Benchmarking
+    
+    
+    bench a simple primitive
+        setup
+            MYSTATE :: 1
+            
+        timelimit
+            100
+            
+        tolerance
+            10 100
+            
+        replicate
+            1000
+            
+        baseline
+            til 10000
+            
+        behaviour
+            til 5000
+            
+        teardown
+            delete MYSTATE from `.

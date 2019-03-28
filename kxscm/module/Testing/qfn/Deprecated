@@ -1,0 +1,7 @@
+// @fileOverview A deprecated Function
+// @returns {null}
+
+//@deprecated since version 4.1.1, use notDeprecated instead
+{[]
+    
+    }

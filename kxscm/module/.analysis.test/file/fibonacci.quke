@@ -1,0 +1,12 @@
+feature fibonacci
+    
+    should return the first 10 fibonacci numbers
+        
+        expect the first 10 fibonacci numbers
+            
+            1 1 2 3 5 8 13 21 34 55 ~ fibonacci each til 10
+            
+        expect the fibonacci numbers to be the sum of the previous two
+            
+            { (2_x) ~ sum 2_'1 2 xprev\: x } fibonacci each til 10 
+            

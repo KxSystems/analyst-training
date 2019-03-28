@@ -1,0 +1,8 @@
+// @fileOverview 
+// The lint.config file in this module causes the ASSIGN_RESERVED_WORD 
+// error to be ignored. The @qlintinclude causes the rule to be included.
+// @returns {int}
+// @qlintinclude ASSIGN_RESERVED_WORD
+{[]
+    where : 1 
+    } 

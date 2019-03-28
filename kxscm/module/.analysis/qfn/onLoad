@@ -1,0 +1,33 @@
+// @fileOverview 
+// This is a kickstarter and will be run whenever this module is pulled
+
+{[]
+    
+    Planet :: `earth;
+    
+    
+    // Other setup for general training
+    
+    // Do not modify below this lne ---------
+    
+    `..code set 1b;
+
+    // A simple stateful API to test
+    // .kv.add implemented to cause some tests to fail
+
+    .kv.init    : { .kv.STATE :: ()!() };
+    .kv.add     : { .kv.STATE[x]:y };
+    .kv.remove  : { .kv.STATE :: enlist[x] _ .kv.STATE };
+    .kv.fetch   : { $[x in key .kv.STATE; .kv.STATE x; ::] };
+
+    // .kv.add implemented so that all the tests will pass
+    
+    .kv.add   : { .kv.STATE :: .kv.STATE , enlist[x]!enlist y };
+    
+    // Run the CellData transform so that we can skip the 
+    // Transformer training if required and skip to Visual 
+    // Inspector, etc
+    
+    .edi.evaluate["CellDataComplex[::; ::]"; ""]
+    
+    }

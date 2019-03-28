@@ -1,0 +1,17 @@
+// @fileOverview This file has multiple broken linter rules, but only some appear in the output because others are suppressed
+// @returns {int} 
+{[]
+    //A fixed seed is used four times in this file. Normally, this should generate four FIXED_SEED warnings.
+    //However, only two warnings are generated for this file because the second and third fixed seeds are locally suppressed.
+    10?0ng;
+    
+    //Notice the brackets after the FIXED_SEED rule. These parentheses (and the enclosing number) indicate that this
+    //is a local suppression that should only apply to certain lines in the file. The number in the parentheses indicates
+    //how many lines from the current line the rule should be ignored. In this case, the number is 2, so the FIXED_SEED 
+    //rule is ignored from this line (line 16) to two lines below (line 18). This covers two of the four fixed seeds.
+    //@qlintsuppress FIXED_SEED(2)
+    10?0ng;
+    10?0ng;
+    10?0ng;
+    
+    }

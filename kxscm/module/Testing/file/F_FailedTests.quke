@@ -1,0 +1,11 @@
+feature F_FailedTests
+
+    before
+        // Code here will execute before the feature is run
+
+    after
+        // Code here will execute after the feature is run
+
+    should exhibit a behaviour
+        expect a specific result
+            0b

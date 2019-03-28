@@ -1,0 +1,12 @@
+// @fileOverview 
+// Return the nth number in the Fibonacci sequence
+//
+// @param n {long} 
+// @returns {long} 
+{[n]
+    // Recursivley calculates a value in the fibonacci sequence
+    // at index x
+    $[n < 2;
+        1;
+        .z.s[n - 1] + .z.s[n - 2]]
+    }

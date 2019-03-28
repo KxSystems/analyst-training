@@ -1,0 +1,9 @@
+// @fileOverview This file has multiple broken linter rules, but only some appear in the output because others are suppressed
+// @param x {int}
+// @returns {int} 
+
+//The UNUSED_PARAM warning is suppressed in the entire file, so this warning is not reported to the user
+//@qlintsuppress UNUSED_PARAM
+{[x]
+    10?0ng
+    }

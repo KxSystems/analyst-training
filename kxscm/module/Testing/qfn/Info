@@ -1,0 +1,5 @@
+// @fileOverview This File failes the UNDOCUMENTED_PARAM linter rule
+// @returns {int} 
+{[x]
+    x
+    }

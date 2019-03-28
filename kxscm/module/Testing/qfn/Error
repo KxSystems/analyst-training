@@ -1,0 +1,6 @@
+// @fileOverview This file has an ASSIGN_RESERVED_WORD linter error. But it is not displayed 
+//               when linting due to the linter configuration file.
+// @returns {null} 
+{[]
+    where : 1
+    }

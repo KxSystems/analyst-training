@@ -1,0 +1,35 @@
+feature kv
+    
+    before each 
+        .kv.init[]
+            
+        
+    after 
+        .kv.init[]
+        
+    
+    property adds items to an empty store
+        .qch.check .qch.forall2 [.qch.g.symbol[]; .qch.g.any[]] {
+            .kv.init[];
+            : (::) ~ .kv.add[x;y]
+            }
+            
+    property adds items to a non-empty store
+        .qch.check .qch.forall2 [.qch.g.symbol[]; .qch.g.any[]] {
+            : (::) ~ .kv.add[x;y]
+            }
+            
+            
+    property gets items from the store
+        .qch.check .qch.forall2 [.qch.g.symbol[]; .qch.g.any[]] {
+            .kv.add[x;y];
+            : y ~ .kv.fetch x
+            }
+            
+            
+    property removes items from the store
+        .qch.check .qch.forall2 [.qch.g.symbol[]; .qch.g.any[]] {
+            .kv.add[x;y];
+            .kv.remove x;
+            : (::) ~ .kv.fetch x
+            } 

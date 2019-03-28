@@ -1,0 +1,7 @@
+// @fileOverview This file passes all linter rules
+// @param x {int} the first number
+// @param y {int} the second number
+// @returns {int}
+{[x;y]
+    x+y
+    }

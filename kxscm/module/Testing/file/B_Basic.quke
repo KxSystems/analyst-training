@@ -1,0 +1,33 @@
+feature kv
+    
+    before each
+        .kv.init[]   
+        
+    after 
+        .kv.init[]
+        
+    should add items to the store
+        expect adding an integer to not error
+            (::) ~ .kv.add[`key; 5]
+            
+        expect adding a symbol to not error
+            (::) ~ .kv.add[`key; `hi]           
+            
+    should get items from the store
+        expect adding an integer to not error
+            .kv.add[`key; 5];
+            5 ~ .kv.fetch`key
+            
+        expect adding a symbol to not error
+           .kv.add[`key; `hi];
+            `hi ~ .kv.fetch`key
+                      
+    should remove items from the store
+        expect adding an integer to not error
+            .kv.add[`key; 5];
+            .kv.remove`key;
+            (::) ~  .kv.fetch`key
+               
+    should reset
+        expect the state to be reset
+            0 = count .kv.STATE
