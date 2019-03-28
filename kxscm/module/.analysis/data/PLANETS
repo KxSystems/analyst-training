@@ -1,5 +1,0 @@
-`name xkey ([]
-    name        : `mercury`venus`earth`mars`jupiter`saturn`neptune`uranus;
-    radius      : 2440 6052 6371 3390 69911 58232 24622 25362;
-    gasGiant    : 00001111b    
-    ) 

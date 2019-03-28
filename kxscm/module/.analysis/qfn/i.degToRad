@@ -1,9 +1,0 @@
-// @fileOverview
-// Converts degrees to radians
-//
-// @param x {number} Degrees to convert to radians
-//
-// @return {float} Value in radians
-{[x]
-    : x * PI % 180;
-    }

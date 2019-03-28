@@ -5,6 +5,8 @@ Note, `.qp.go` specifies a width and height for the plot specification.
 
 
 ```q
+    cells: ([] date: 400?.z.d+til 10; source: 400?400; dest: 400?400; duration: 400?10)
+
 
     subset : select date, source, dest, duration from cells;
     
@@ -22,6 +24,6 @@ Note, `.qp.go` specifies a width and height for the plot specification.
     
     // More than two columns produces a plot matrix of the specified columns
     
-    .qp.go[500;500] .qp.plot[cells; `tower`dest`duration; ::];
+    .qp.go[500;500] .qp.plot[cells; `dest`duration; ::];
 
 ```
