@@ -1,0 +1,11 @@
+feature filterReadings
+    
+    should filter out sensor readings
+        expect sensor readings to be reduce by a factor of 5
+            2 ~ count filterReadings[5] ([] x : til 10)
+            
+    property should filter readings of any table
+        .qch.check .qch.forall2[.qch.g.int 5; .qch.g.table[]]{
+            if[x = 0; : .qch.discard];
+            (ceiling count[y] % x) ~ count filterReadings[x; y]
+            }

@@ -1,0 +1,11 @@
+// @fileOverview 
+// Smooths a signal value by filtering the readings by a given factor
+// and then applying a moving average to maintain the structure
+//
+// @param factor  {long}  Smoothing factor
+// @param signals {table} Table to smooth
+//
+// @returns {table} Smoothed signal reading values
+{[factor; signals]
+    update factor mavg signal from filterReadings[factor] signals
+    }

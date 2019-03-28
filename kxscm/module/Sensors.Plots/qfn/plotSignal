@@ -1,0 +1,11 @@
+{[signal]
+    .qp.stack (
+         .qp.line[signal; `time; `signal]
+            .qp.s.geom[enlist[`fill]!enlist .gg.colour.FireBrick];
+        .qp.line[signal; `time; `active]
+            .qp.s.geom[enlist[`fill]!enlist .gg.colour.Navy];
+        .qp.line[signal; `time; `ma]
+            .qp.s.geom[enlist[`fill]!enlist .gg.colour.Orange]
+       
+        )
+    }

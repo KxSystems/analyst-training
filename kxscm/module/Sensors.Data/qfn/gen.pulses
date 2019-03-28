@@ -1,0 +1,3 @@
+{[scale; pulse; pulseWidth; repeatWidth; n]    
+    : raze gen.pulse[scale;;pulse;pulseWidth] each x ,' (-1 _ next x:repeatWidth * til n),n * repeatWidth
+    }

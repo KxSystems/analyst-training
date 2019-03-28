@@ -1,0 +1,7 @@
+{[scale; range; pulse; width]
+    time   : first[range] + ("j"$scale) * til "j"$(last[range] - first range) div "j"$scale;
+    signal : ([] time: time; signal: 4 mavg count[time]?0.1);
+    start  : rand time where time < max[time] - width;
+    
+    : update signal: signal + pulse from signal where time within (start; start + width)
+    }

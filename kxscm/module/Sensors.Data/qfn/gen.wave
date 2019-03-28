@@ -1,0 +1,4 @@
+{[width; noise; n]
+    fuzz: 4 mavg (n?noise) - n?noise % 2;    
+    ([] time: width * til n; signal:fuzz + sin (width % 0D00:00:01.000) * til n)
+    }
