@@ -12,35 +12,32 @@ on each geometry can be found in the *Analyst Function Reference* under *Help*.
 
     // Basic plot
 
-    .qp.go[500;500] .qp.point[cells; `date; `dest; ::];
+    .qp.go[500;500] .qp.point[subset; `time; `signal; ::];
     
     // A mapping with no scale will *try* to produce something
     
-    .qp.go[500;500] .qp.point[cells; `date; `dest]
-        .qp.s.aes   [`fill; `duration];
+    .qp.go[500;500] .qp.point[subset; `time; `signal]
+        .qp.s.aes   [`fill; `active];
         
     // A mapping with a scale is much better
         
-    .qp.go[500;500] .qp.point[cells; `date; `dest]
-          .qp.s.aes   [`fill; `duration]
-        , .qp.s.scale [`fill; .gg.scale.colour.gradient[.gg.colour.FireBrick; .gg.colour.SteelBlue] ];
+    .qp.go[500;500] .qp.point[subset; `time; `signal]
+          .qp.s.aes   [`fill; `active]
+        , .qp.s.scale [`fill; .gg.scale.colour.gradient[`firebrick; `steelblue] ];
         
     // More mappings can be joined together
         
-    .qp.go[500;500] .qp.point[cells; `date; `dest]
-          .qp.s.aes   [`fill; `duration]
-        , .qp.s.scale [`fill; .gg.scale.colour.gradient[.gg.colour.FireBrick; .gg.colour.SteelBlue] ]
-        , .qp.s.aes   [`alpha; `duration]
+    .qp.go[500;500] .qp.point[subset; `time; `signal]
+          .qp.s.aes   [`fill`alpha; `active`ma]
+        , .qp.s.scale [`fill; .gg.scale.colour.gradient[`firebrick; `steelblue] ]
         , .qp.s.scale [`alpha; .gg.scale.alpha[50; 255] ];
         
     // And more...
         
-    .qp.go[500;500] .qp.point[cells; `date; `dest]
-          .qp.s.aes   [`fill; `duration]
-        , .qp.s.scale [`fill; .gg.scale.colour.gradient[.gg.colour.FireBrick; .gg.colour.SteelBlue] ]
-        , .qp.s.aes   [`alpha; `duration]
+    .qp.go[500;500] .qp.point[subset; `time; `signal]
+          .qp.s.aes   [`fill`alpha`size; `active`ma`ma]
+        , .qp.s.scale [`fill; .gg.scale.colour.gradient[`firebrick; `steelblue] ]
         , .qp.s.scale [`alpha; .gg.scale.alpha[50; 255] ]
-        , .qp.s.aes   [`size; `duration]
         , .qp.s.scale [`size; .gg.scale.circle.area[1; 20] ];
         
 ```
@@ -53,17 +50,17 @@ in the *Analyst Function Reference* under *Help*.
         
     // Set the size and fill colour of a point geometry
         
-    .qp.go[500;500] .qp.point[cells; `date; `dest]
-        .qp.s.geom[`fill`size!(.gg.colour.FireBrick; 0.5)]
+    .qp.go[500;500] .qp.point[subset; `time; `signal]
+        .qp.s.geom[`fill`size!(`firebrick; 0.5)]
         
     // In general, `fill refers to fill colour and `colour refers to stroke colour
         
-    .qp.go[500;500] .qp.point[cells; `date; `dest]
-        .qp.s.geom[`fill`colour`size!(.gg.colour.Gold; .gg.colour.Black; 2)]
+    .qp.go[500;500] .qp.point[subset; `time; `signal]
+        .qp.s.geom[`fill`colour`size!(`gold; `black; 2)]
         
     // Alpha (opacity) only applies to the fill colour
     
-    .qp.go[500;500] .qp.point[cells; `date; `dest]
-        .qp.s.geom[`alpha`colour`size!(0x00; .gg.colour.Black; 5)]
+    .qp.go[500;500] .qp.point[subset; `time; `signal]
+        .qp.s.geom[`alpha`colour`size!(0x00; `black; 5)]
         
 ```

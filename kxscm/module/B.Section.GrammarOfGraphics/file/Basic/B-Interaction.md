@@ -5,7 +5,7 @@ Evaluate the line below:
 
 ```q
 
-    .qp.go[500;500] .qp.point[cells; `date; `dest; ::];
+    .qp.go[500;500] .qp.point[subset; `ma; `signal; ::];
     
 ```
 
@@ -24,7 +24,12 @@ Execute the following histogram and drag a horizontal slice across the image.
 
 ```q
 
-    .qp.go[500;500] .qp.histogram[cells; `duration; ::];
+    .qp.go[500;500] .qp.histogram[data; `ma; ::];
+    
+    
+    // Settings, like number of bins, can be slotted in as the second argument
+    .qp.go[500;500] .qp.histogram[data; `ma] 
+        .qp.s.binx[`c;200;0]
     
 ```
 
@@ -38,7 +43,7 @@ Execute the following and click on a bar.
 
 ```q
 
-    .qp.go[500;500] .qp.boxplot[cells; `tower; `duration; ::];
+    .qp.go[500;500] .qp.boxplot[subset; `machine; `signal; ::];
 
 ```
 

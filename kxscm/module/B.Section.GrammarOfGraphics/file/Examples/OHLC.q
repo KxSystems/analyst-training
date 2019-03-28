@@ -1,8 +1,11 @@
 // Mock a data set
-ohlc : raze {open:"f"$sums 90?-1 0 1;([]sym:x;date:2015.01.01+til 90;open:open;close:-2.5+open+90?5;high:-2.5+open+90?8;low:-2.5+open+90?8;volume:90?40000000)} each `AAPL,50?`4;
+ohlc: raze {
+    open:"f"$sums 90?-1 0 1;
+    ([]sym:x;date:2015.01.01+til 90;open:open;close:-2.5+open+90?5;high:-2.5+open+90?8;low:-2.5+open+90?8;volume:90?40000000)
+    } each `abcd,50?`4;
 delete from `ohlc where .gg.scale.toWeekday [date] in `Saturday`Sunday;
 update gain:close > open from `ohlc;
-symbol : rand ohlc`sym;
+symbol: rand ohlc`sym;
 
 // Stacked Area Chart showing order volume
 
@@ -62,17 +65,17 @@ ma: {[n; c; tt]
     (`date; `$"ma",string n) xcol ([]date: f+til count ma; ma: ma)
     };
 
-snapshot : select from ohlc where sym=symbol,date within 2015.01.01 2015.07.01;
-t12: ma[12; `close; snapshot];
-t26: ma[26; `close; snapshot];
-macd: select date, macd: ma12 - ma26 from t26 lj `date xkey t12;
-signal: ma[9; `macd; macd];
-histo: select zero:0f, date, histo:macd-ma9 from signal lj `date xkey macd;
+snapshot: select from ohlc where sym=symbol,date within 2015.01.01 2015.07.01;
+t12:      ma[12; `close; snapshot];
+t26:      ma[26; `close; snapshot];
+macd:     select date, macd: ma12 - ma26 from t26 lj `date xkey t12;
+signal:   ma[9; `macd; macd];
+histo:    select zero:0f, date, histo:macd-ma9 from signal lj `date xkey macd;
 
-MACDChart : {[histo; macd; signal; ops]
-    dates: -[;1] @[;`date] histo 1_where not =':[0 < histo`histo];
-    overlap : select date,x:ma9 from signal where date in dates; 
-    overlap : select date, x, buy:macd<ma9 from (overlap lj `date xkey signal) lj `date xkey macd;
+MACDChart: {[histo; macd; signal; ops]
+    dates: -1+@[;`date] histo 1_where not =':[0 < histo`histo];
+    overlap: select date,x:ma9 from signal where date in dates; 
+    overlap: select date, x, buy:macd<ma9 from (overlap lj `date xkey signal) lj `date xkey macd;
     
     .qp.stack (
         // MACD histogram

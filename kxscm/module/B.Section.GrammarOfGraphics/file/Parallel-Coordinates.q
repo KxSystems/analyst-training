@@ -1,9 +1,10 @@
 // Load the data
-diamonds: `index xcol ("jfsCsffffff"; enlist ",") 0: `:Data/diamonds.csv; 
-diamonds[`const]: -1;
+data: raze {
+    open:"f"$sums 90?-1 0 1;
+    ([]sym:x;date:2015.01.01+til 90;open:open;close:-2.5+open+90?5;high:-2.5+open+90?8;low:-2.5+open+90?8;volume:90?40000000)
+    } each `AAPL,50?`4;
 
 // A sample of the data
-data:  1000?`x1`y`z`const _ diamonds;
 cs:    cols data;
 n:     count cs;
 
@@ -47,12 +48,12 @@ coordinates: .qp.stack labels , grids , enlist titles;
 // A collection of segments for each pair of columns
 segments: .qp.stack {[d;i;p]
     .qp.segment[d; pcol i; pcol p 0; pcol i + 1; pcol p 1]
-        .qp.s.geom[`fill`alpha!(.gg.colour.Orange; 20)]
+        .qp.s.geom[`fill`alpha!(`orange; 20)]
     }[points]'[til count pairs; pairs];
 
 // Parallel coordinates is just the set of axes and the set of segments
 .qp.go[900;500] 
     .qp.theme[.gg.theme.transparent]
     .qp.theme[`canvas_fill`axis_use_x`axis_use_y`padding_left`padding_bottom!(0xffffffff; 0b;0b;60;60)]
-    .qp.title["Parallel Coordinates for Diamonds"]
+    .qp.title["Parallel Coordinates for OHLC"]
     .qp.stack (segments; coordinates)

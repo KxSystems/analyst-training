@@ -9,11 +9,11 @@ both using separate y axes.
 ```q
 
     .qp.go[500;300] .qp.split (
-        .qp.histogram[cells; `date]
-              .qp.s.geom[`alpha`fill!(0x80; .gg.colour.SteelBlue)]
+        .qp.histogram[subset; `time]
+              .qp.s.geom[`alpha`fill!(0x80; `steelblue)]
             , .qp.s.binx[`c;50;0];
-        .qp.point[cells; `date; `dest]
-              .qp.s.geom[`alpha`size`fill!(0x80; 1; .gg.colour.FireBrick)]);
+        .qp.point[subset; `time; `signal]
+              .qp.s.geom[`alpha`size`fill!(0x80; 1; `firebrick)]);
 
 ```
 
@@ -28,9 +28,9 @@ In the example below, zoom into either plot and notice the other updates to matc
 ```q
 
     .qp.go[600;500] .qp.vertical (
-        .qp.histogram[cells; `duration]
+        .qp.histogram[subset; `ma]
             .qp.s.link`myID;
-        .qp.point[cells; `date; `dest]
+        .qp.point[subset; `time; `signal]
             .qp.s.link`myID);
 
 ```
@@ -46,11 +46,11 @@ marked as secondary to the histogram.
 ```q
 
     .qp.go[500;300] .qp.stack (
-        .qp.histogram[cells; `date]
+        .qp.histogram[subset; `time]
               .qp.s.geom[`alpha`fill!(0x80; .gg.colour.SteelBlue)]
             , .qp.s.binx[`c;50;0]
             , .qp.s.primary`myID;
-        .qp.point[cells; `date; `dest]
+        .qp.point[subset; `time; `signal]
               .qp.s.geom[`alpha`size`fill!(0x80; 1; .gg.colour.FireBrick)]
             , .qp.s.secondary`myID);
               

@@ -11,7 +11,7 @@ To see the available options, open `.gg.theme.default` in the Visual Inspector.
 
     // A basic chart with default theme
 
-    .qp.gp[500;300] .qp.histogram[cells; `duration; ::];
+    .qp.go[500;300] .qp.histogram[subset; `signal; ::];
     
     // Use clean theme as a template, and override various aspects
     
@@ -19,6 +19,6 @@ To see the available options, open `.gg.theme.default` in the Visual Inspector.
         .qp.theme[.gg.theme.clean]
         .qp.theme[`axis_use_x`grid_style_x`grid_style_y`plot_background_fill!(0b; `none; `zebra; 0xffffffff)]
         .qp.title["Custom Chart"]
-            .qp.histogram[cells; `duration; ::];
+            .qp.histogram[subset; `signal; ::];
 
 ```

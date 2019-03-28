@@ -10,56 +10,58 @@ into a single frame by *stacking* them together.
 ```q
 
     summary : select
-            minDuration :   min duration,
-            maxDuration:    max duration,
-            avgDuration:    avg duration,
-            maxLabel:       50 + max duration,
-            avgLabel:       50 + avg duration,
-            towerLabel:     0.25 + first tower
-        by tower from cells;
+            minDuration:    min signal,
+            maxDuration:    max signal,
+            avgDuration:    avg signal,
+            maxLabel:       max signal,
+            avgLabel:       avg signal,
+            sensorLabel:    first sensor
+        by sensor from subset;
 
     // Any number of layers can be stacked together
     
     .qp.go[500;500]
         .qp.stack (
-            .qp.interval[summary; `tower; `minDuration; `maxDuration; ::];
-            .qp.point[summary; `tower; `avgDuration; ::]);
+            .qp.interval[summary; `sensor; `minDuration; `maxDuration; ::];
+            .qp.point[summary; `sensor; `avgDuration; ::]);
     
     // Layers within a stack can be arbitrarily customized
         
     .qp.go[500;500]
         .qp.stack (
-            .qp.interval[summary; `tower; `minDuration; `maxDuration]
+            .qp.interval[summary; `sensor; `minDuration; `maxDuration]
                 .qp.s.geom[`fill`colour!.gg.colour`Grey`Black];
-            .qp.point[summary; `tower; `avgDuration; ::]);
+            .qp.point[summary; `sensor; `avgDuration; ::]);
             
     // Text geometries are a good way of annotating plot
             
     .qp.go[500;500]
         .qp.stack (
-            .qp.interval[summary; `tower; `minDuration; `maxDuration]
+            .qp.interval[summary; `sensor; `minDuration; `maxDuration]
                 .qp.s.geom[`fill`colour!.gg.colour`Grey`Black];
-            .qp.point[summary; `tower; `avgDuration; ::];
-            .qp.text[summary; `tower; `maxLabel; `tower]
-                .qp.s.textalign[`middle]);
+            .qp.point[summary; `sensor; `avgDuration; ::];
+            .qp.text[summary; `sensor; `maxLabel; `sensor]
+                .qp.s.textalign[`middle] ,
+                .qp.s.geom[``offsety!(::;-10)]);
            
     // By stacking multiple layers, custom plots can be expressed
            
     .qp.go[500;500]
         .qp.stack (
-            .qp.interval[summary; `tower; `minDuration; `maxDuration]
+            .qp.interval[summary; `sensor; `minDuration; `maxDuration]
                   .qp.s.geom[`fill`colour!.gg.colour`Grey`Black];
-            .qp.interval[summary; `tower; `avgDuration; `avgDuration]
+            .qp.interval[summary; `sensor; `avgDuration; `avgDuration]
                   .qp.s.geom[enlist[`colour]!enlist .gg.colour.Gold];
-            .qp.text[summary; `tower; `maxLabel; `tower]
-                  .qp.s.textalign[`middle];
-            .qp.text[summary; `towerLabel; `avgLabel; `avgDuration]
-                  .qp.s.textalign[`left]
-                , .qp.s.geom[`angle`size`fill!(-90; 8; .gg.colour.White)]);
+            .qp.text[summary; `sensor; `maxLabel; `sensor]
+                  .qp.s.textalign[`middle] ,
+                .qp.s.geom[``offsety!(::;-10)];
+            .qp.text[summary; `sensorLabel; `avgLabel; `avgDuration]
+                  .qp.s.textalign[`left] ,
+                  .qp.s.geom[`angle`size`offsety`fill!(-90; 8; -10; `white)]);
                 
     // The boxplot geometry is itself a stack of several layers
                 
-    .qp.go[500;500] .qp.boxplot[cells; `tower; `duration; ::];
+    .qp.go[500;500] .qp.boxplot[subset; `sensor; `signal; ::];
 
 ```
 
@@ -72,43 +74,43 @@ Beyond stacking, frames can be arranged to create visual summaries.
     // Horizontal arrangements
 
     .qp.go[500;500] .qp.horizontal (
-        .qp.point[cells; `date; `dest; ::];
-        .qp.point[cells; `date; `source; ::]);
+        .qp.point[subset; `time; `signal; ::];
+        .qp.point[subset; `time; `ma; ::]);
         
     // Vertical arrangements
         
     .qp.go[500;500] .qp.vertical (
-        .qp.point[cells; `date; `dest; ::];
-        .qp.point[cells; `date; `source; ::]);
+        .qp.point[subset; `time; `signal; ::];
+        .qp.point[subset; `time; `ma; ::]);
         
     // Horizontal or vertical arrangements can be weighted
         
     .qp.go[1000;500] .qp.layout[`hori_w; 2 1] (
-        .qp.point[cells; `date; `dest; ::];
-        .qp.point[cells; `date; `source; ::]);
+        .qp.point[subset; `time; `signal; ::];
+        .qp.point[subset; `time; `ma; ::]);
         
     .qp.go[1000;500] .qp.layout[`vert_w; 2 1] (
-        .qp.point[cells; `date; `dest; ::];
-        .qp.point[cells; `date; `source; ::]);
+        .qp.point[subset; `time; `signal; ::];
+        .qp.point[subset; `time; `ma; ::]);
         
     // ... or nested
         
     .qp.go[500;500] .qp.vertical (
-        .qp.title["Destinations"] .qp.point[cells; `date; `dest; ::];
+        .qp.title["Destinations"] .qp.point[subset; `time; `signal; ::];
         .qp.horizontal (
-            .qp.point[cells; `date; `source; ::];
-            .qp.histogram[cells; `duration; ::]));
+            .qp.point[subset; `time; `ma; ::];
+            .qp.histogram[subset; `signal; ::]));
             
     // Any number of plots can be arranged in a grid
         
-    .qp.go[500;500]
+    .qp.go[800;500]
         .qp.theme[.gg.theme.clean]
         .qp.title["Distributions of major columns"]
         .qp.grid[3 0N] (
-            .qp.histogram[cells; `date; ::];
-            .qp.histogram[cells; `source; ::];
-            .qp.histogram[cells; `dest; ::];
-            .qp.histogram[cells; `tower; ::];
-            .qp.histogram[cells; `duration; ::]);
+            .qp.histogram[subset; `time; ::];
+            .qp.histogram[subset; `ma; ::];
+            .qp.histogram[subset; `signal; ::];
+            .qp.histogram[subset; `sensor; ::];
+            .qp.histogram[subset; `active; ::]);
 
 ```
