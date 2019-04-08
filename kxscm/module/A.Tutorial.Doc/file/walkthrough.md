@@ -246,11 +246,14 @@ a closer look at this signal. We can use quick plotting library that included wi
 ```q
 // Select only sensor that is failing. Replace the query keys with the ones from 
 // the tooltip in the visual inspector.
+// 
+// Replace the `mach_g` value with the machine name and the `pressure_a` with the 
+// sensor name from the tooltip in the Visual Inspector 
 failing: select from sensors where machine=`mach_g, sensor=`pressure_a;
 .qp.go[800; 500] plotSignal failing
 ```
 
-This likely signals to us that we need to investigate this sensor further. There may be a 
+This likely indicates to us that we need to investigate this sensor further. There may be a 
 faulty sensor or an actual issue with the machine itself. We would have expected to see a 
 complete signal produced from this sensor. Ideally, something more like the following.
  
@@ -300,8 +303,8 @@ While performing our visualization on the sensors data, we identified a potentia
 with one of the sensors in the system. We then created some custom visualization to investigate
 this further.
 
-And finally, we have taken the first 100 individual sensor signals by machine and plotted
-them in a plot matrix in a single visual summary.
+And finally, we will take the first 100 individual sensor signals by machine and plot
+them in a single visual summary.
 
 ```q
 // Select the first 100 sensors and filter the time dimension 1:100
