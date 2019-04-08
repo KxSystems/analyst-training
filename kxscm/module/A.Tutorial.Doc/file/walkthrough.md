@@ -322,9 +322,9 @@ and select `Test`. This will show the test output in the console.
     }
 ```
 
-Save the function by pressing CTRL+S or `File > Save`. This will reload the function
-into the runtime of the process. Once saved, the linter icon should be removed from the
-gutter of the editor.
+Save the function by pressing CTRL+S (CMD+S on Mac) or `File > Save`. This will reload 
+the function into the runtime of the process. Once saved, the linter icon should be removed 
+from the gutter of the editor.
 
 To confirm this is the working version of the function, run the tests again by 
 right-clicking and selecting to `Test` again. If the correct version has been selected,
