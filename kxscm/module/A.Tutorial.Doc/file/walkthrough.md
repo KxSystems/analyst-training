@@ -1,23 +1,32 @@
-Sensors Demo
-============
+Walkthrough
+===========
 
-This demonstration uses a simulated system of sensors on various machines in a hypothetical
-environment. This demo will showcase how Analyst can be used by a data scientist or a developer
-to perform some data ingest and ad-hoc analysis.
+This walkthrough uses a simulated system of sensors on various machines in a hypothetical
+environment. We will use this data to showcase how this tool can be used by a data scientist
+or a developer to perform data ingest and ad-hoc analysis.
+
+Setup
+-----
+
+The data for this tutorial can be found in our workspace under the `A.Tutorial.Data` module.
+When the process is started, its working directory is where the process was started or where
+it was moved to. To be able to access this data, we need to move the process to the workspace
+directory. Run the following line to move the the process to the workspace.
+
+```q
+system "cd ",.ws.wsDir[];
+```
 
 Data
 -----
 
 Let's start with some data. The data for this project was originally simulated and exported
-to CSV format. The data can be found under `Sensors.Data` in three files, `temp.csv`,
+to CSV format. The data can be found under `A.Tutorial.Data` in three files, `temp.csv`,
 `pressure.csv`, and `weight.csv`. 
 
 ```q
-// Navigate to the workspace directory
-go.ws[];
-
 // Read a sample of the data to show its contents
-contents: 10#read0 `:Sensors.Data/temp.csv;
+contents: 10#read0 `:A.Tutorial.Data/temp.csv;
 
 // Parse that data into a table with string contents
 sample: (sum[1b,","=first contents]#"*"; enlist csv) 0: contents;
@@ -35,7 +44,7 @@ CSV file format with the temperature data file.
     -------------------------------------------------------------------------------
                       Source Format: CSV - Comma Separated Value
                       
-        File Path       : Sensors.Data/temp.csv
+        File Path       : A.Tutorial.Data/temp.csv
         Delimiter       : Comma ,
         Include Columns : ☑
         Lines to Skip   : 0
@@ -56,8 +65,11 @@ We could directly import the table but here we want to fix messy columns. To do 
 select `Transform` in the *Import Type* select. Finally, pressing `Finish` will 
 launch into the *Table Transformer*.
 
-Table Transformer
------------------
+Table Transformer (*Kx Analyst Only*)
+-------------------------------------
+
+> Note if not using Kx Analyst, skip to the `Data Simulation` section to generate 
+> the sensors data.
 
 Using the transformer, we can do more complex data transformations before importing
 the data. The transformer works on a sample of the data to build up a workflow of
@@ -65,10 +77,9 @@ actions that will transform the data into a usable format. Once the transform
 has been built, it can be executed on the current data or saved into a compiled
 kdb+ function and parameterized.
 
-For this transform we will add an *Action* node to the transform add a moving 
-column. First, right-click the node and select `New > Action`. Now right click the 
-`signal` column and select `Add Column...`.
-and add the parse expression.
+For this transform we will add an *Action* node to the transform and add a moving
+average  column. First, right-click the node and select `New > Action`. Now right 
+click the  `signal` column and select `Add Column...`.
 
 
     Add Column
@@ -96,8 +107,8 @@ saved and executed like a function.
 ### ImportSensors
 
 To save time, a more complete transformation has already been provided in 
-`Sensors.IO/ImportSensors`. Before opening this transform, ensure that the 
-process is in the workspace directory by running `go.ws[]`. 
+`A.Tutorial.IO/ImportSensors`. Before opening this transform, ensure that the 
+process is in the workspace directory.
 
 This transform takes three types of sensor data from csv files, reads the contents, joins 
 them together, summarizes and writes the data to tables in memory. The table below details 
@@ -122,27 +133,54 @@ the different nodes in this transformation.
 
 
 Select the `Graphic` node to display the graphs in the transformation. Next select
-`Transform > Run` to perform the importer. The transform will take ~30 seconds to ingest
-the data on a reasonable laptop. The graphic that has been selected is showing a sensor signal
+`Transform > Run` to perform the import. The transform will ingest the data and produce the 
+output tables. The graphic node that has been selected is showing a sensor signal
 plot of one sensor.
 
 Alternatively, the transformation can be run as a function by invoking the transform.
 
 ```q
-go.ws[];
-
 // In a transformation, the first argument is for the inputs to the transform 
 // and the last argument is for the outputs. Providing null for both uses the defaults
 // that were configured in the UI. A dictionary can be provided for each input or output
 // that maps the name of the node in the UI to a new input or output configuration.
-// This import takes about 35-40 seconds on a reasonable laptop and far less on a server.
 ImportSensors[::;::]
+
+// Example with explicit input and output locations
+ImportSensors[
+    `temp`pressure!(`:A.Tutorial.Data/temp.csv; `:A.Tutorial.Data/Pressure.csv);
+    
+    // Output to a csv file called `signals.csv` - we need to change the output format
+    // from a kdb+ table to a csv file by creating a new `.im.io` source descriptor 
+    enlist[`signals]!enlist .im.io.with.target[`:signals_out.csv] .im.io.create `csv
+    ];
+
+// Now there is a new file called signals_out.csv
+contents: 10#read0 `:signals_out.csv;
 ```
+
+Data Simulation
+---------------
+
+In the interest of time and space, the data that we have imported is very small so that
+it could easily be shared. For the remainder of the walkthrough, we will switch to using
+a simulated version of the data that is much larger than the data we have just imported.
+
+```q
+// Running the simulation will take a bit of time but will produce far more data than
+// what was imported. Once complete, there will be around ~10M simulated sensor readings
+// in the new `sensors` table.
+sensors: sim.system[];
+
+// Check the count of the sensors table
+count sensors
+```
+
 
 Visual Inspector
 ----------------
 
-Now that the data has been imported, we can start exploring it. We can use the 
+Now that the data has been generated, we can start exploring it. We can use the 
 *Visual Inspector* to visualize and tumble the data. We can use the *Process View* to see
 which tables were imported. Select the `Process` tab in the search pane view to see 
 functions and data in our process. Under the global tables tab, we should find the tables
@@ -151,6 +189,7 @@ that were just imported.
 
     └── . (Global)
         └── Tables
+            ├── sample
             ├── sensors
             ├── signals
             └── summary
@@ -170,7 +209,7 @@ to be the average active rate.
     -------------------------------------------------------------------------------
      query: sensors                                                              
     -------------------------------------------------------------------------------
-     Chart Type: Horiz Histogram               | X Axis Column    : machine       
+     Chart Type: Histogram                     | X Axis Column    : machine       
                                                | ...                            
                                                | ✓ Enable Fill Colour  
                                                | Fill Aggregation : Average   
@@ -179,29 +218,24 @@ to be the average active rate.
 
 Now that we understand the distribution of the activity per sensor, we can look at the
 average sensor readings over time. A visualization has been saved in 
-`Sensors.Plots/ReadingsOverTime`. Double-click the plot to view the readings over time.
+`A.Tutorial.Plots/ReadingsOverTime`. Double-click the plot to view the readings over time.
 
-    └── demo-sensors
-        └── Sensors.Plots
+    └── training
+        └── A.Tutorial.Plots/Plots
             └── ReadingsOverTime
-
-```q
-// View the number of sensor readings in the dataset
-count sensors
-```
 
 
 Analysis
 --------
 
 Let's turn our focus to the individual sensors readings. Let's look at all the distinct
-sensor readings over time. Double-click the `SignalBySensor` plot in `Sensors.Plots` to
+sensor readings over time. Double-click the `SignalBySensor` plot in `A.Tutorial.Plots` to
 view all of the discrete signals. This will be a messy plot but will allow us to visualize
 the entire dataset.
 
 
-    └── demo-sensors
-        └── Sensors.Plots
+    └── training
+        └── A.Tutorial.Plots
             └── SignalBySensor
 
 
@@ -234,6 +268,7 @@ To clean this plot up and see more of the underlying patterns, we can use a simp
 function to reduce the noise in the data. Here we can use the `smoothReadings` function to help
 reduce the noise in the plot.
 
+
 ```q
 smooth: smoothReadings[5] firstId
 ```
@@ -248,8 +283,8 @@ called `signals` but the filter statement is trying to use a value called `senso
 that the bug then lies in the `filterReadings` function. Find the function in the workspace 
 tree and double-click to open it. 
 
-    └── demo-sensors
-        └── Sensors.Analysis
+    └── training
+        └── A.Tutorial.Analysis
             └── filterReadings
 
 Inside of this function, we can see that the `sensors` value is being used but is not defined 
@@ -275,15 +310,21 @@ and select `Test`. This will show the test output in the console.
         property should filter readings of any table
             Counter Example: (1i;+`fibap`bmlpp!(08:29 02:09; "ab"))
             Error: type
-                            
-To fix this issue, we can use a previous working version of the function. The
-function has been version in *git* so we can simply revert to a previous version.
-Find the function in the workspace tree, right-click and select `Git > History`
+                   
 
-In the function history dialog, select the previously `Published` version of the
-function. In the preview area at the bottom, notice that the `sensors` is substituted
-with `factor`. Once the working version is selected press `Revert` to get this version of 
-the function. 
+!!! note "Important"
+    To fix this issue, we need to replace the last reference to `signals` with `factor`.
+    The function definition should now read as the following.
+
+```q
+{[factor; signals]
+    select from signals where 0 = i mod factor
+    }
+```
+
+Save the function by pressing CTRL+S or `File > Save`. This will reload the function
+into the runtime of the process. Once saved, the linter icon should be removed from the
+gutter of the editor.
 
 To confirm this is the working version of the function, run the tests again by 
 right-clicking and selecting to `Test` again. If the correct version has been selected,

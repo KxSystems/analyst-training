@@ -1,4 +1,0 @@
-{[]
-    // move around function
-    go.ws :: {system "cd ",.ws.wsDir[]};
-    }
