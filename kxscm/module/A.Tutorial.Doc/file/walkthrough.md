@@ -296,8 +296,8 @@ Summary
 -------
 
 In this quick data analysis project, we took some simulated sensor data and imported it using
-using the *Table Transformer*. We then performed some ad-hoc visualizations using Analyst's 
-*Visual Inspector*. We then built some custom visualizations using the *Grammar of Graphics*. 
+using the *Table Transformer*. We then performed some ad-hoc visualizations using the
+*Visual Inspector* tool. We then built some custom visualizations using the *Grammar of Graphics*. 
 
 While performing our visualization on the sensors data, we identified a potential issue 
 with one of the sensors in the system. We then created some custom visualization to investigate
