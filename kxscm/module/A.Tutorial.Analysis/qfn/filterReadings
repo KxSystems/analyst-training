@@ -8,5 +8,5 @@
 //
 // @returns {table} Reduced signal reading values
 {[factor; signals]
-    select from signals where 0 = i mod signals
+    select from signals where 0 = i mod factor
     }

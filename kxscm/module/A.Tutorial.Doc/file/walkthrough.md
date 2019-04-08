@@ -57,7 +57,7 @@ data is presented. To see the underlying textual data, switch the view to `Text`
 Pressing `Next` takes you to the *Schema* tab where the column names and types
 can be manipulated before importing. Here, we will want to change the types for 
 the `machine` and `sensor` columns to `Symbol`. The `signal`, and `active`
-columns should be `float`. All of the remaining columns should be set to `Long` .
+columns should be `float`. All of the remaining columns should be set to `Long`.
 We perform processing on it in the *Table Transformer*.
 
 Pressing `Next` takes you to the *Import* tab where a final action can be selected.
@@ -162,9 +162,10 @@ contents: 10#read0 `:signals_out.csv;
 Data Simulation
 ---------------
 
-In the interest of time and space, the data that we have imported is very small so that
-it could easily be shared. For the remainder of the walkthrough, we will switch to using
-a simulated version of the data that is much larger than the data we have just imported.
+!!! note "Important"
+    In the interest of time and space, the data that we have imported is very small so that
+    it could easily be shared. For the remainder of the walkthrough, we will switch to using
+    a simulated version of the data that is much larger than the data we have just imported.
 
 ```q
 // Running the simulation will take a bit of time but will produce far more data than
@@ -225,9 +226,6 @@ average sensor readings over time. A visualization has been saved in
             └── ReadingsOverTime
 
 
-Analysis
---------
-
 Let's turn our focus to the individual sensors readings. Let's look at all the distinct
 sensor readings over time. Double-click the `SignalBySensor` plot in `A.Tutorial.Plots` to
 view all of the discrete signals. This will be a messy plot but will allow us to visualize
@@ -267,73 +265,6 @@ firstId: select from sensors where id = first id;
 To clean this plot up and see more of the underlying patterns, we can use a simple smoothing
 function to reduce the noise in the data. Here we can use the `smoothReadings` function to help
 reduce the noise in the plot.
-
-
-```q
-smooth: smoothReadings[5] firstId
-```
-
-Here we have encountered a `type` error. One of the arguments that we gave to the function
-is not of the correct type. To debug this further, we can use the built in *Quick Debugger*.
-Right-click the line and select `Quick Debugger`. This will open the debugger in a new tab
-and will jump to the line that encountered the error.
-
-Notice that in the second stack frame, there are two parameters, one called `factor` and one 
-called `signals` but the filter statement is trying to use a value called `sensors`. We can see
-that the bug then lies in the `filterReadings` function. Find the function in the workspace 
-tree and double-click to open it. 
-
-    └── training
-        └── A.Tutorial.Analysis
-            └── filterReadings
-
-Inside of this function, we can see that the `sensors` value is being used but is not defined 
-We should have known that this would not work since there is a linter icon in the left gutter 
-of the editor. If we hover over the orange `•` icon in the gutter, we get a message about the
-`factor` parameter not being used.
-
-    UNUSED_PARAM: "factor"
-      This parameter was declared then never used
-
-
-Additionally, if we had run the tests for this function, it would have been clear 
-that there was an issue. To see the failing test, right-click on the function editor
-and select `Test`. This will show the test output in the console.
-
-    2 of 2 tests failed
-
-    Failed Tests : 2 
-    feature filterReadings
-        should filter out sensor readings
-            expect sensor readings to be reduce by a factor of 5 
-                Error: type
-        property should filter readings of any table
-            Counter Example: (1i;+`fibap`bmlpp!(08:29 02:09; "ab"))
-            Error: type
-                   
-
-!!! note "Important"
-    To fix this issue, we need to replace the last reference to `signals` with `factor`.
-    The function definition should now read as the following.
-
-```q
-{[factor; signals]
-    select from signals where 0 = i mod factor
-    }
-```
-
-Save the function by pressing CTRL+S (CMD+S on Mac) or `File > Save`. This will reload 
-the function into the runtime of the process. Once saved, the linter icon should be removed 
-from the gutter of the editor.
-
-To confirm this is the working version of the function, run the tests again by 
-right-clicking and selecting to `Test` again. If the correct version has been selected,
-the tests will pass and the following will be printed in the console
-    
-    All 2 test passed
-
-Now that the `filterReadings` function has be fixed and the tests have passed, we can continue
-the analysis.
 
 ```q
 smooth: smoothReadings[10] firstId;
