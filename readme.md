@@ -4,10 +4,10 @@ Kx Analyst Training
 Getting Kx Analyst & Kx Developer
 ---------------------------
 
-Kx Developer and Kx Analyst can be downloaded from the following links:
-
-- [Kx Developer](https://code.kx.com/developer/getting-started/). 
-- [Kx Analyst](https://code.kx.com/analyst/getting-started/). 
+Kx Developer can be downloaded from the 
+[Developer getting started](https://code.kx.com/developer/getting-started/) page.
+Kx Analyst can be accessed following the instructions on the the
+[Analyst getting started](https://code.kx.com/analyst/getting-started/) page.
 
 Once downloaded, extract the tool and install it following the instructions provided in
 the `README.md` file included.
