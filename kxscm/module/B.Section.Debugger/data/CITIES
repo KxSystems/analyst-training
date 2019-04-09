@@ -1,0 +1,5 @@
+// Lat-Long tuples of cities around the world
+`name xkey flip `name`coordinates!flip (
+    (`New_York ; 40.6976637 -74.1197635 );
+    (`London   ; 51.524184 -0.1908916   )
+    )
