@@ -148,7 +148,7 @@ ImportSensors[::;::]
 
 // Example with explicit input and output locations
 ImportSensors[
-    `temp`pressure!(`:A.Tutorial.Data/temp.csv; `:A.Tutorial.Data/Pressure.csv);
+    `temp`pressure!(`:A.Tutorial.Data/temp.csv; `:A.Tutorial.Data/pressure.csv);
     
     // Output to a csv file called `signals.csv` - we need to change the output format
     // from a kdb+ table to a csv file by creating a new `.im.io` source descriptor 
