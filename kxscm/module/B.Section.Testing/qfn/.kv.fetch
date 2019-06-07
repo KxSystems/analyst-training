@@ -1,0 +1,5 @@
+// @fileOverview
+// Returns the value for a key in the key-value store
+// @param x {symbol} key to return item for
+// @return {any} item for given key
+{ .kv.STATE x }

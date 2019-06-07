@@ -14,7 +14,7 @@ it was moved to. To be able to access this data, we need to move the process to 
 directory. Run the following line to move the the process to the workspace.
 
 ```q
-system "cd ",.axws.wsDir[];
+system "cd ",getenv `AX_WORKSPACE;
 ```
 
 Data

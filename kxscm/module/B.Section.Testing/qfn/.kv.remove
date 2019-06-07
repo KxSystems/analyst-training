@@ -1,0 +1,5 @@
+// @fileOverview
+// Removes the value for a given key from the key-value store
+// @param x {symbol} key to remove
+// @return {null}
+{ .kv.STATE: x _ .kv.i.store }
