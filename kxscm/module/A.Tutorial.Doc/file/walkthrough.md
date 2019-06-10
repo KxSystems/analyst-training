@@ -144,7 +144,7 @@ Alternatively, the transformation can be run as a function by invoking the trans
 // and the last argument is for the outputs. Providing null for both uses the defaults
 // that were configured in the UI. A dictionary can be provided for each input or output
 // that maps the name of the node in the UI to a new input or output configuration.
-ImportSensors[::;::]
+ImportSensors[::;::];
 
 // Example with explicit input and output locations
 ImportSensors[
