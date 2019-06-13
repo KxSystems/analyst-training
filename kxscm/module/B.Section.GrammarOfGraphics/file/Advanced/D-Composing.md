@@ -7,14 +7,12 @@ of composing layers into a single frame. This splits two frames into a single fr
 both using separate y axes.
 
 ```q
-
-    .qp.go[500;300] .qp.split (
-        .qp.histogram[subset; `time]
-              .qp.s.geom[`alpha`fill!(0x80; `steelblue)]
-            , .qp.s.binx[`c;50;0];
-        .qp.point[subset; `time; `signal]
-              .qp.s.geom[`alpha`size`fill!(0x80; 1; `firebrick)]);
-
+.qp.go[500;300] .qp.split (
+    .qp.histogram[subset; `time]
+          .qp.s.geom[`alpha`fill!(0x80; `steelblue)]
+        , .qp.s.binx[`c;50;0];
+    .qp.point[subset; `time; `signal]
+          .qp.s.geom[`alpha`size`fill!(0x80; 1; `firebrick)]);
 ```
 
 ### Dependencies
@@ -26,13 +24,11 @@ First, independent frames can rely on one another by `linking` to the same ident
 In the example below, zoom into either plot and notice the other updates to match.
 
 ```q
-
-    .qp.go[600;500] .qp.vertical (
-        .qp.histogram[subset; `ma]
-            .qp.s.link`myID;
-        .qp.point[subset; `time; `signal]
-            .qp.s.link`myID);
-
+ .qp.go[600;500] .qp.vertical (
+     .qp.histogram[subset; `ma]
+         .qp.s.link`myID;
+     .qp.point[subset; `time; `signal]
+         .qp.s.link`myID);
 ```
 
 Second, within the same frame, a primary plot can share its data with any number
@@ -44,14 +40,13 @@ on the x axis, and the point would use a 2D region if it had not been
 marked as secondary to the histogram.
 
 ```q
-
-    .qp.go[500;300] .qp.stack (
-        .qp.histogram[subset; `time]
-              .qp.s.geom[`alpha`fill!(0x80; .gg.colour.SteelBlue)]
-            , .qp.s.binx[`c;50;0]
-            , .qp.s.primary`myID;
-        .qp.point[subset; `time; `signal]
-              .qp.s.geom[`alpha`size`fill!(0x80; 1; .gg.colour.FireBrick)]
-            , .qp.s.secondary`myID);
-              
+.qp.go[500;300] .qp.stack (
+    .qp.histogram[subset; `time]
+          .qp.s.geom[`alpha`fill!(0x80; .gg.colour.SteelBlue)]
+        , .qp.s.binx[`c;50;0]
+        , .qp.s.primary`myID;
+    .qp.point[subset; `time; `signal]
+          .qp.s.geom[`alpha`size`fill!(0x80; 1; .gg.colour.FireBrick)]
+        , .qp.s.secondary`myID);
+          
 ```

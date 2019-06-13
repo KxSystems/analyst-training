@@ -1,3 +1,10 @@
+// @fileOverview
+// Runs a simulation of a sensor based system with some different machines
+// and sensors. The values for these sensors are randomly generated values
+// between 0 and 1. The simulation takes a few seconds and will produce 
+// approximately 10-15 million records.
+//
+// @return {table} simulated sensors data
 {[]
     labels   : raze {`$(string[x],"_"),/:rand[26]#.Q.a} each `feed`mach`pkg;
     readings : raze {sim.machine[x; 1 + rand 3]} each labels;

@@ -8,17 +8,14 @@ current theme.
 To see the available options, open `.gg.theme.default` in the Visual Inspector.
 
 ```q
+// A basic chart with default theme
+.qp.go[500;300] .qp.histogram[subset; `signal; ::];
 
-    // A basic chart with default theme
-
-    .qp.go[500;300] .qp.histogram[subset; `signal; ::];
-    
-    // Use clean theme as a template, and override various aspects
-    
-    .qp.go[500;300] 
-        .qp.theme[.gg.theme.clean]
-        .qp.theme[`axis_use_x`grid_style_x`grid_style_y`plot_background_fill!(0b; `none; `zebra; 0xffffffff)]
-        .qp.title["Custom Chart"]
-            .qp.histogram[subset; `signal; ::];
+// Use clean theme as a template, and override various aspects
+.qp.go[500;300] 
+    .qp.theme[.gg.theme.clean]
+    .qp.theme[`axis_use_x`grid_style_x`grid_style_y`plot_background_fill!(0b; `none; `zebra; 0xffffffff)]
+    .qp.title["Custom Chart"]
+        .qp.histogram[subset; `signal; ::];
 
 ```
