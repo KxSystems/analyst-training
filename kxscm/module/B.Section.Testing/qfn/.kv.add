@@ -1,0 +1,7 @@
+// @fileOverview
+// Adds a value to the key-value state
+//
+// @param x {symbol} key of item to store
+// @param y {symbol} item to store
+// @return {null}
+{ .kv.STATE[x]:y }
