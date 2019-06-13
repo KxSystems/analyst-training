@@ -4,7 +4,7 @@ filterReadings[5] ([] x : til 10)
   
 // Then, ctrl/meta + i to open the visual inspector
 
-3 enlist/ .analysis.CITIES
+3 enlist/ CITIES
 
 // Hover over the following function to get parameter information
 // Open the function and notice the documentation format that provides this information
@@ -19,7 +19,8 @@ filt
 
 filterReadings
 
-// Open the function below using the hotkey and right-click the editor and choose Test to run the corresponding tests
+// Open the function below using the hotkey and right-click the editor and choose Test
+// to run the corresponding tests
 
 filterReadings
 

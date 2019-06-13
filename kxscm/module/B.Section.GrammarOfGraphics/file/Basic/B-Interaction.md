@@ -4,9 +4,7 @@
 Evaluate the line below:
 
 ```q
-
-    .qp.go[500;500] .qp.point[subset; `ma; `signal; ::];
-    
+.qp.go[500;500] .qp.point[subset; `ma; `signal; ::];
 ```
 
 Click the a point in the resulting image. Notice a table appears under
@@ -23,14 +21,12 @@ in to the data.
 Execute the following histogram and drag a horizontal slice across the image.
 
 ```q
+.qp.go[500;500] .qp.histogram[data; `ma; ::];
 
-    .qp.go[500;500] .qp.histogram[data; `ma; ::];
-    
-    
-    // Settings, like number of bins, can be slotted in as the second argument
-    .qp.go[500;500] .qp.histogram[data; `ma] 
-        .qp.s.binx[`c;200;0]
-    
+// Settings, like number of bins, can be slotted in as the second argument
+.qp.go[500;500] .qp.histogram[data; `ma] 
+    .qp.s.binx[`c;200;0]
+
 ```
 
 Notice how the entire bar does not need to be selected to zoom. The zoom
@@ -42,9 +38,7 @@ area, whereas a histogram zooms only into the x axis.
 Execute the following and click on a bar.
 
 ```q
-
-    .qp.go[500;500] .qp.boxplot[subset; `machine; `signal; ::];
-
+.qp.go[500;500] .qp.boxplot[subset; `machine; `signal; ::];
 ```
 
 Notice that many tables have been created under the image. In general, GG does

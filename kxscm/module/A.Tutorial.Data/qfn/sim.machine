@@ -1,3 +1,9 @@
+// @private
+// @fileOverview
+// Simulates the readings for a single machine
+// @param label {symbol} label to apply to machine
+// @param n     {long}   number of readings to generate
+// @return {table}
 {[label; n]
     sensors: raze {`$(string[x],"_"),/:.Q.a} each `temp`pressure`weight;
     : raze {[n; sensor]

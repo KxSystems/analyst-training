@@ -18,9 +18,8 @@ Getting this repository
 This repository can be cloned directly into Kx Analyst or Kx Developer. Right-click the
 workspace area on the left of the page and select `Git > Clone...`. In the dialog, enter
 the URL for the training repository `https://github.com/kxsystems/analyst-training.git`.
-Pressing `Ok` will open the `Pull Repository` dialog with the option to select a name
-and branch for the repository. Press `Ok` to finish cloning the repository.
-                                            
+Pressing `OK` will open the `Pull Repository` dialog with the option to select a name
+and branch for the repository. Press `OK` to finish cloning the repository.
 
 Organization
 ------------
@@ -43,40 +42,43 @@ Resources
 
 For more resources, please refer to the following links.
 
-### Analyst
+### Kx Analyst
 
-- [Home page](https://kx.com/solutions/the-enterprise/analyst/)
-- [User guide](https://code.kx.com/analyst/)
+- [Kx Analyst home](https://kx.com/solutions/the-enterprise/analyst/) - Full featured interactive development environment for q and kdb+
+- [Kx Analyst user guide](https://code.kx.com/analyst/) - Product documentation and example use cases
 
 #### Visual Data Transformer and Query
 
 
-- (*blog*) [Data Transformer](https://kx.com/blog/kx-product-insights-modern-data-preparation-etl-in-analyst-for-kx/)
-- (*video*) [Data Transformer](https://vimeo.com/183895691)
-- (*video*) [Visual Query in Transformer](https://vimeo.com/184708019)
+- (*blog*) [Kx Product Insights: Modern Data Preparation (ETL) in Kx Analyst](https://kx.com/blog/kx-product-insights-modern-data-preparation-etl-in-analyst-for-kx/)
+- (*video*) [Data Transformer overview](https://vimeo.com/183895691)
+- (*video*) [Filtering data without programming using the Transformer](https://vimeo.com/184708019)
 
 #### Visualization
 
-- (*blog*) [Visualization for Exploratory Data Analysis](https://kx.com/blog/kx-product-insights-visualization-for-exploratory-data-analysis-eda/)
-- (*video*) [Visual Inspector](https://vimeo.com/183886181)
+- (*blog*) [Visualization for exploratory data analysis](https://kx.com/blog/kx-product-insights-visualization-for-exploratory-data-analysis-eda/)
+- (*video*) [Visual Inspector overview](https://vimeo.com/183886181)
 - (*video*) [Custom Graphics with q Visualization Library](https://vimeo.com/212133060)
 
 #### Spreadsheet
 
-- (*video*) [Spreadsheet](https://vimeo.com/183891867)
+- (*video*) [Spreadsheet overview](https://vimeo.com/183891867)
 
-### Developer
+### Kx Developer
 
-- [User guide](https://code.kx.com/developer/)
+- [Kx Developer user guide](https://code.kx.com/developer/) - Product documentation and example use cases
 
 #### IDE
 
-- (*blog*) [IDE Overview](https://kx.com/blog/kx-product-insights-analyst-for-kx-ide/)
-- (*video*) [IDE Overview](https://vimeo.com/239703330)
+- (*blog*) [Kx Product Insights: IDE Overview](https://kx.com/blog/kx-product-insights-analyst-for-kx-ide/)
+- (*video*) [IDE overview](https://vimeo.com/239703330)
 
 #### Testing
 
-- (*blog*) [Testing with qCumber and QuickCheq](https://kx.com/blog/kx-product-insights-testing-using-analyst-for-kx/)
+- (*blog*) [Kx Product Insights: Testing with qCumber and QuickCheq](https://kx.com/blog/kx-product-insights-testing-using-analyst-for-kx/)
 - (*video*) [Testing with qCumber and QuickCheq](https://vimeo.com/221903630)
 - (*video*) [Behavioural Driven Development](https://vimeo.com/183916767)
 
+### Demos
+
+- (*video*) [Kx Developer and Kx Analyst: Live demo of a data driven project using taxi data](https://www.youtube.com/watch?v=o3Sg_RHnUdw)
