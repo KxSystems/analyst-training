@@ -1,3 +1,8 @@
+// @private
+// @fileOverview
+// Generate a number of signals for a given sensor
+// @param n {long} the number of pulses
+// @return {float[]} generated sensor readings
 {[n]
     : gen.pulses[0D00:00:00.02; 0.75; rand 0D00:00:40.0; 0D00:01:00.0; n];
     }

@@ -5,6 +5,11 @@ feature filterReadings
             2 ~ count filterReadings[5] ([] x : til 10)
             
     property should filter readings of any table
+        // Apply a quickcheq propery of 2 inputs (using `forall2`) where
+        // the first input is an integer from 0-5 and the second input is
+        // a table of anything. This will run the test property (the function)
+        // 100 times with random combinations of inputs to try and prove that 
+        // the property holds or does not.
         .qch.check .qch.forall2[.qch.g.int 5; .qch.g.table[]]{
             if[x = 0; : .qch.discard];
             (ceiling count[y] % x) ~ count filterReadings[x; y]

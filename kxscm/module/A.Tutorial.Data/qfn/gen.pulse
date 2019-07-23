@@ -1,3 +1,11 @@
+// @private
+// @fileOverview
+// Generate a single signal pulse for a sensor
+// @param scale {timespan} time scale of pulse
+// @param range {tuple (float; float)} boundaries of pulse
+// @param pulse {float} size of pulse
+// @param width {timespan} time width of pulse
+// @return {table} generated sensor reading with a pulse
 {[scale; range; pulse; width]
     time   : first[range] + ("j"$scale) * til "j"$(last[range] - first range) div "j"$scale;
     signal : ([] time: time; signal: 4 mavg count[time]?0.1);

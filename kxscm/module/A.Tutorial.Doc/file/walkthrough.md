@@ -14,7 +14,7 @@ it was moved to. To be able to access this data, we need to move the process to 
 directory. Run the following line to move the the process to the workspace.
 
 ```q
-system "cd ",.ws.wsDir[];
+system "cd ",getenv `AX_WORKSPACE;
 ```
 
 Data
@@ -144,7 +144,7 @@ Alternatively, the transformation can be run as a function by invoking the trans
 // and the last argument is for the outputs. Providing null for both uses the defaults
 // that were configured in the UI. A dictionary can be provided for each input or output
 // that maps the name of the node in the UI to a new input or output configuration.
-ImportSensors[::;::]
+ImportSensors[::;::];
 
 // Example with explicit input and output locations
 ImportSensors[
@@ -247,9 +247,9 @@ a closer look at this signal. We can use quick plotting library that included wi
 // Select only sensor that is failing. Replace the query keys with the ones from 
 // the tooltip in the visual inspector.
 // 
-// Replace the `mach_g` value with the machine name and the `pressure_a` with the 
+// Replace the `mach_a` value with the machine name and the `pressure_a` with the 
 // sensor name from the tooltip in the Visual Inspector 
-failing: select from sensors where machine=`mach_g, sensor=`pressure_a;
+failing: select from sensors where machine=`mach_a, sensor=`pressure_a;
 .qp.go[800; 500] plotSignal failing
 ```
 
@@ -271,7 +271,7 @@ reduce the noise in the plot.
 
 ```q
 smooth: smoothReadings[10] firstId;
-.qp.go[800;500] plotSignal smooth;
+.qp.go[800;500] plotSignal smooth
 ```
 
 Let's take a look at one last facet of the data. We can use the Grammar of Graphics to

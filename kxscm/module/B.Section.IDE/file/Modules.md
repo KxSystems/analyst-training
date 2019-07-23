@@ -10,6 +10,8 @@
 - A repository is the top level for a group of version controlled entities
 - A repository contains many modules and spreadsheets
 
-## Kickstarters
+## Loading on startup
 
-- A module can contain a "ks" function (see .analysis)
+A module can contain an "onLoad" function that will be run when the workspace loads.
+See [automatic initialization](https://code.kx.com/analyst/faq/#automatic-initialization-when-loading-a-module)
+for more information.

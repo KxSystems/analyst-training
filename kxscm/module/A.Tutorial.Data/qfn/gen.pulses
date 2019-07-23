@@ -1,3 +1,12 @@
+// @private
+// @fileOverview
+// Generate multiple pulses for a sensor
+// @param scale {timespan} time scale of pulse
+// @param pulse {float} size of pulse
+// @param pulseWidth {timespan} time width of pulse
+// @param repeatWidth {timespan} time between pulses
+// @param n {long} number of readings
+// @return {table} generated sensor reading with a pulses
 {[scale; pulse; pulseWidth; repeatWidth; n]    
     : raze gen.pulse[scale;;pulse;pulseWidth] each x ,' (-1 _ next x:repeatWidth * til n),n * repeatWidth
     }
