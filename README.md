@@ -12,6 +12,20 @@ Kx Analyst can be accessed following the instructions on the the
 Once downloaded, extract the tool and install it following the instructions provided in
 the `README.md` file included.
 
+![](./overview/images/ide.png)
+
+What's New in Analyst & Developer
+---------------------------------
+
+- Remote Editor connection search, favorite, and filter
+- Ability to toggle the Sidebar within the IDE (Windows > Toggle Sidebar)
+- Repository changes printed to the console on Pull
+- Area, Interval, Pie, Ribbon, and Segment charts added to **Visual Inspector**
+- Error Bar geometry added to **Grammar of Graphics** (`.qp.errorbar`, `.qp.herrorbar`)
+
+And many more. Check the [release notes](https://code.kx.com/analyst/release-notes) for the full list.
+
+
 Getting this repository
 -----------------------
 
@@ -20,6 +34,8 @@ workspace area on the left of the page and select `Git > Clone...`. In the dialo
 the URL for the training repository `https://github.com/kxsystems/analyst-training.git`.
 Pressing `OK` will open the `Pull Repository` dialog with the option to select a name
 and branch for the repository. Press `OK` to finish cloning the repository.
+
+
 
 Organization
 ------------
@@ -49,7 +65,6 @@ For more resources, please refer to the following links.
 
 #### Visual Data Transformer and Query
 
-
 - (*blog*) [Kx Product Insights: Modern Data Preparation (ETL) in Kx Analyst](https://kx.com/blog/kx-product-insights-modern-data-preparation-etl-in-analyst-for-kx/)
 - (*video*) [Data Transformer overview](https://vimeo.com/183895691)
 - (*video*) [Filtering data without programming using the Transformer](https://vimeo.com/184708019)
@@ -71,6 +86,7 @@ For more resources, please refer to the following links.
 #### IDE
 
 - (*blog*) [Kx Product Insights: IDE Overview](https://kx.com/blog/kx-product-insights-analyst-for-kx-ide/)
+- (*blog*) [Integrating Python and kdb+ to detect suspicious logins](https://kx.com/blog/integrating-python-and-kdb-to-detect-suspicious-logins/)
 - (*video*) [IDE overview](https://vimeo.com/239703330)
 
 #### Testing
@@ -78,6 +94,12 @@ For more resources, please refer to the following links.
 - (*blog*) [Kx Product Insights: Testing with qCumber and QuickCheq](https://kx.com/blog/kx-product-insights-testing-using-analyst-for-kx/)
 - (*video*) [Testing with qCumber and QuickCheq](https://vimeo.com/221903630)
 - (*video*) [Behavioural Driven Development](https://vimeo.com/183916767)
+
+
+### Libraries
+
+- (*website*) [Libraries home](https://code.kx.com/analyst/libraries/)
+- (*blog*) [Kx Product Insights: AxLibraries and Q Build Utilities](https://kx.com/blog/code-development-documentation-linting-testing-kx-analyst/)
 
 ### Demos
 
