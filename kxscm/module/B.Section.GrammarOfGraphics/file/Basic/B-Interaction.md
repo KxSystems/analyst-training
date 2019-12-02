@@ -21,10 +21,10 @@ in to the data.
 Execute the following histogram and drag a horizontal slice across the image.
 
 ```q
-.qp.go[500;500] .qp.histogram[data; `ma; ::];
+.qp.go[500;500] .qp.histogram[subset; `ma; ::];
 
 // Settings, like number of bins, can be slotted in as the second argument
-.qp.go[500;500] .qp.histogram[data; `ma] 
+.qp.go[500;500] .qp.histogram[subset; `ma] 
     .qp.s.binx[`c;200;0]
 
 ```
