@@ -17,11 +17,20 @@ the `README.md` file included.
 What's New in Analyst & Developer
 ---------------------------------
 
-- Remote Editor connection search, favorite, and filter
+**General**:
+
+- **Remote Editor** connection search, favorite, and filter
 - Ability to toggle the Sidebar within the IDE (Windows > Toggle Sidebar)
-- Repository changes printed to the console on Pull
-- Area, Interval, Pie, Ribbon, and Segment charts added to **Visual Inspector**
-- Error Bar geometry added to **Grammar of Graphics** (`.qp.errorbar`, `.qp.herrorbar`)
+- Accessibility improvements throughout
+- General fixes and performance improvements
+
+**Libraries**:
+
+- Conditional feature skip with `skip if` block in **qcumber**
+- `qcumber.q_` unit testing library reporting and usability improvements
+- `qlint.q_` linting library now checks for `lint.config` files on disk
+- `qlint.q_` exits with code `1` if there are *error* class issues
+
 
 And many more. Check the [release notes](https://code.kx.com/analyst/release-notes) for the full list.
 
@@ -34,7 +43,6 @@ workspace area on the left of the page and select `Git > Clone...`. In the dialo
 the URL for the training repository `https://github.com/kxsystems/analyst-training.git`.
 Pressing `OK` will open the `Pull Repository` dialog with the option to select a name
 and branch for the repository. Press `OK` to finish cloning the repository.
-
 
 
 Organization
@@ -65,17 +73,23 @@ For more resources, please refer to the following links.
 
 #### Visual Data Transformer and Query
 
+![Transformer](./overview/images/transformer.png)
+
 - (*blog*) [Kx Product Insights: Modern Data Preparation (ETL) in Kx Analyst](https://kx.com/blog/kx-product-insights-modern-data-preparation-etl-in-analyst-for-kx/)
 - (*video*) [Data Transformer overview](https://vimeo.com/183895691)
 - (*video*) [Filtering data without programming using the Transformer](https://vimeo.com/184708019)
 
 #### Visualization
 
+![Visual Inspector](./overview/images/inspector.png)
+
 - (*blog*) [Visualization for exploratory data analysis](https://kx.com/blog/kx-product-insights-visualization-for-exploratory-data-analysis-eda/)
 - (*video*) [Visual Inspector overview](https://vimeo.com/183886181)
 - (*video*) [Custom Graphics with q Visualization Library](https://vimeo.com/212133060)
 
 #### Spreadsheet
+
+![Spreadsheet](./overview/images/sheet.png)
 
 - (*video*) [Spreadsheet overview](https://vimeo.com/183891867)
 
@@ -85,18 +99,24 @@ For more resources, please refer to the following links.
 
 #### IDE
 
+![Hover Hint](./overview/images/hover-hint.png)
+![Linting](./overview/images/linting.png)
+
 - (*blog*) [Kx Product Insights: IDE Overview](https://kx.com/blog/kx-product-insights-analyst-for-kx-ide/)
 - (*blog*) [Integrating Python and kdb+ to detect suspicious logins](https://kx.com/blog/integrating-python-and-kdb-to-detect-suspicious-logins/)
 - (*video*) [IDE overview](https://vimeo.com/239703330)
 
 #### Testing
 
+![Testing](./overview/images/testing.png)
+
 - (*blog*) [Kx Product Insights: Testing with qCumber and QuickCheq](https://kx.com/blog/kx-product-insights-testing-using-analyst-for-kx/)
 - (*video*) [Testing with qCumber and QuickCheq](https://vimeo.com/221903630)
 - (*video*) [Behavioural Driven Development](https://vimeo.com/183916767)
 
-
 ### Libraries
+
+![Grammar of Graphics](./overview/images/gg.png)
 
 - (*website*) [Libraries home](https://code.kx.com/analyst/libraries/)
 - (*blog*) [Kx Product Insights: AxLibraries and Q Build Utilities](https://kx.com/blog/code-development-documentation-linting-testing-kx-analyst/)

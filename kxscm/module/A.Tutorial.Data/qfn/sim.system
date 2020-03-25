@@ -3,12 +3,10 @@
 // and sensors. The values for these sensors are randomly generated values
 // between 0 and 1. The simulation takes a few seconds and will produce 
 // approximately 10-15 million records.
-//
 // @return {table} simulated sensors data
 {[]
     labels   : raze {`$(string[x],"_"),/:rand[26]#.Q.a} each `feed`mach`pkg;
     readings : raze {sim.machine[x; 1 + rand 3]} each labels;
     failing  : update signal: 0.9, ma:0.9, active: 0.9 from readings where machine = rand machine, sensor = rand sensor, time > max[time] div 2;
-    
     : failing
     }
