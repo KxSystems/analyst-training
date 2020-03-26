@@ -1,9 +1,7 @@
 // @fileOverview
 // Applies a set of aggregations over the signal values for each sensor
 // of a given machine.
-//
 // @param machine {table} Sensor readings for a single machine
-//
 // @returns {table} Summary aggregation of machine
 {[machine]
     select 

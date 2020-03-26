@@ -2,10 +2,8 @@
 // Reduces the number of ticks in a sensor's reading by a given
 // factor. This filter keeps only ticks that are a multiple of the
 // given factor.
-//
 // @param factor  {long}  Reduction factor
 // @param signals {table} Table to reduce
-//
 // @returns {table} Reduced signal reading values
 {[factor; signals]
     select from signals where 0 = i mod factor

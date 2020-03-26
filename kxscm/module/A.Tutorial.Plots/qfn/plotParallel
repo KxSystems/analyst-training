@@ -1,3 +1,8 @@
+// @fileOverview
+// Produces a parallel coordinates plot of various aggregations over each sensor
+// in a table of signal readings
+// @param signal {table}
+// @return {dict} Grammar of graphics plot specification
 {[signal] 
     machine : machineSummary signal;
     summary : flip (!) . ({first value flip key x}; {flip value flip value x}) @\: machine;
@@ -59,6 +64,4 @@
         .qp.title["Aggregations for Sensors"]    
         .qp.stack (segments; coordinates)
 
-    
-    
     }
