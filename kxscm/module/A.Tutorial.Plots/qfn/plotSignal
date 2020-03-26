@@ -1,6 +1,6 @@
 // @fileOverview
-// Plots a single the signal, moving average and active values of a single
-// signal by time stacked on a single plot.
+// Plots a signal, moving average and active values of a
+// sensor by time stacked on a single plot.
 // @param signal {table} 
 // @return {dict} Grammar of graphics plot specification
 {[signal]
