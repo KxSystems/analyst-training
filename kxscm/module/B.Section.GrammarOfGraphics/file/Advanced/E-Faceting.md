@@ -1,9 +1,9 @@
 ## Faceting
 
-Facets are useful to split a plot into subplots.
+Facets are useful to split a plot into subplots. Each subplot will only contain data
+relating to one distinct value of the facet column.
 
-In the following, we can see large spikes in the low range until the
-8th, when the spikes move to the mid range, and the low range drops out.
+The facet below shows individual signal distributions for each sensor.
 
 ```q
 .qp.go[1000;500] .qp.facet[update date:time.minute from subset; `sensor]

@@ -24,11 +24,17 @@ Let's start with some data. The data for this project was originally simulated a
 to CSV format. The data can be found under `A.Tutorial.Data` in three files, `temp.csv`,
 `pressure.csv`, and `weight.csv`. 
 
-```q
-// Read a sample of the data to show its contents
-contents: 10#read0 `:A.Tutorial.Data/temp.csv;
+---
 
-// Parse that data into a table with string contents
+Read a sample of the data to show its contents
+
+```q
+contents: 10#read0 `:A.Tutorial.Data/temp.csv;
+```
+
+Parse that data into a table with string contents
+
+```q
 sample: (sum[1b,","=first contents]#"*"; enlist csv) 0: contents;
 ```
 
@@ -139,19 +145,24 @@ plot of one sensor.
 
 Alternatively, the transformation can be run as a function by invoking the transform.
 
-```q
-// In a transformation, the first argument is for the inputs to the transform 
-// and the last argument is for the outputs. Providing null for both uses the defaults
-// that were configured in the UI. A dictionary can be provided for each input or output
-// that maps the name of the node in the UI to a new input or output configuration.
-ImportSensors[::;::];
+---
 
-// Example with explicit input and output locations
+In a transformation, the first argument is for the inputs to the transform 
+and the last argument is for the outputs. Providing null for both uses the defaults
+that were configured in the UI. A dictionary can be provided for each input or output
+that maps the name of the node in the UI to a new input or output configuration.
+
+```q
+ImportSensors[::;::];
+```
+
+Example with explicit input and output locations. Write the output to a csv file called
+`signals.csv`. We need to change the output format from a kdb+ table to a csv file by 
+creating a new `.im.io` source descriptor 
+
+```q
 ImportSensors[
     `temp`pressure!(`:A.Tutorial.Data/temp.csv; `:A.Tutorial.Data/pressure.csv);
-    
-    // Output to a csv file called `signals.csv` - we need to change the output format
-    // from a kdb+ table to a csv file by creating a new `.im.io` source descriptor 
     enlist[`signals]!enlist .im.io.with.target[`:signals_out.csv] .im.io.create `csv
     ];
 
@@ -167,14 +178,11 @@ Data Simulation
     it could easily be shared. For the remainder of the walkthrough, we will switch to using
     a simulated version of the data that is much larger than the data we have just imported.
 
+Running the simulation will take a bit of time but will produce far more data than
+what was imported. Once complete, there will be around ~10M simulated sensor readings
+in the new `sensors` table.
 ```q
-// Running the simulation will take a bit of time but will produce far more data than
-// what was imported. Once complete, there will be around ~10M simulated sensor readings
-// in the new `sensors` table.
-sensors: sim.system[];
-
-// Check the count of the sensors table
-count sensors
+count sensors: sim.system[];
 ```
 
 
@@ -260,8 +268,6 @@ complete signal produced from this sensor. Ideally, something more like the foll
 ```q
 // Select the first machine, sensor combo
 firstId: select from sensors where id = first id;
-
-// Plot the signal
 .qp.go[800;500] plotSignal firstId
 ```
 

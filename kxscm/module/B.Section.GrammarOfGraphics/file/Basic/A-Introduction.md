@@ -13,7 +13,7 @@ see `A.Tutorial.Doc/walkthrough.md`.
 // Generate some data
 sensors:  sim.system[];
 
-count data;
+count sensors;
 
 // Take a 50,000 record subset 
 subset: 50000#sensors;

@@ -2,7 +2,7 @@
 // @fileOverview
 // Generate a single signal pulse for a sensor
 // @param scale {timespan} time scale of pulse
-// @param range {tuple (float; float)} boundaries of pulse
+// @param range {(float; float)} boundaries of pulse
 // @param pulse {float} size of pulse
 // @param width {timespan} time width of pulse
 // @return {table} generated sensor reading with a pulse

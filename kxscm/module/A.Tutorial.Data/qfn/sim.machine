@@ -9,6 +9,6 @@
     : raze {[n; sensor]
         reading: sim.sensor n;
         reading: update ma: 4 mavg signal, active: ?[signal > 0.6; 10 mavg signal; 0.01] from reading;
-        : sensor,/:reading
+        : (count[reading]#enlist sensor) ,' reading;
         }[n] each ([] machine : label; sensor: sensors; id: ` sv/: label,/:sensors);
     }

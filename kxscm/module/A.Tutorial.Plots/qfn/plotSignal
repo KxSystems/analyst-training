@@ -1,6 +1,11 @@
+// @fileOverview
+// Plots a signal, moving average and active values of a
+// sensor by time stacked on a single plot.
+// @param signal {table} 
+// @return {dict} Grammar of graphics plot specification
 {[signal]
     .qp.stack (
-         .qp.line[signal; `time; `signal]
+        .qp.line[signal; `time; `signal]
             .qp.s.geom[enlist[`fill]!enlist .gg.colour.FireBrick];
         .qp.line[signal; `time; `active]
             .qp.s.geom[enlist[`fill]!enlist .gg.colour.Navy];
