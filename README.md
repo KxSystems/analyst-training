@@ -20,23 +20,23 @@ What's New in Analyst & Developer
 **General**:
 
 - Ubuntu 20 support
-- *UI change*: The `Remotes` tab has been moved to a `Git` context menu entry
+- **UI change**: The `Remotes` tab has been moved to a `Git` context menu entry
 - Namespace detection when executing lines in local and remote-connected q files
 - QDoc typedef improvements - specify parameterized data structures, and reference them by name in function doc
 
 
 **Libraries**:
 
-- Compression options added to *.table* library
-- *qcumber* now allows custom report writer with `-reporter <file.q>` which defines `write[file; results]`
-- *qcumber* added new `-breakOnError` flag for debugging test errors
-- *qdoc* `@desc` tag now works with typedefs
-- *qdoc* optional dictionary key support added
-- *qdoc* error flag `-errFile` will export all errors during documentation
-- *qdoc* added support for `foreign` and `code` types
-- *qdoc* executed example blocks with new `// @doctest` tag
-- *qlint* reported line and column errors are now 1-indexed (start at line/column 1 rather than 0)
-- *axrepo* mode added to run on kxscm folder structure on disk
+- Compression options added to **.table** library
+- **qcumber** now allows custom report writer with `-reporter <file.q>` which defines `write[file; results]`
+- **qcumber** added new `-breakOnError` flag for debugging test errors
+- **qdoc** `@desc` tag now works with typedefs
+- **qdoc** optional dictionary key support added
+- **qdoc** error flag `-errFile` will export all errors during documentation
+- **qdoc** added support for `foreign` and `code` types
+- **qdoc** executed example blocks with new `// @doctest` tag
+- **qlint** reported line and column errors are now 1-indexed (start at line/column 1 rather than 0)
+- **axrepo** mode added to run on kxscm folder structure on disk
 
 And many more. Check the [release notes](https://code.kx.com/analyst/release-notes#v140) for the full list.
 
