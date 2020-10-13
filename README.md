@@ -19,20 +19,26 @@ What's New in Analyst & Developer
 
 **General**:
 
-- **Remote Editor** connection search, favorite, and filter
-- Ability to toggle the Sidebar within the IDE (Windows > Toggle Sidebar)
-- Accessibility improvements throughout
-- General fixes and performance improvements
+- Ubuntu 20 support
+- **UI change**: The `Remotes` tab has been moved to a `Git` context menu entry
+- Namespace detection when executing lines in local and remote-connected q files
+- QDoc typedef improvements - specify parameterized data structures, and reference them by name in function doc
+
 
 **Libraries**:
 
-- Conditional feature skip with `skip if` block in **qcumber**
-- `qcumber.q_` unit testing library reporting and usability improvements
-- `qlint.q_` linting library now checks for `lint.config` files on disk
-- `qlint.q_` exits with code `1` if there are *error* class issues
+- Compression options added to **.table** library
+- **qcumber** now allows custom report writer with `-reporter <file.q>` which defines `write[file; results]`
+- **qcumber** added new `-breakOnError` flag for debugging test errors
+- **qdoc** `@desc` tag now works with typedefs
+- **qdoc** optional dictionary key support added
+- **qdoc** error flag `-errFile` will export all errors during documentation
+- **qdoc** added support for `foreign` and `code` types
+- **qdoc** executed example blocks with new `// @doctest` tag
+- **qlint** reported line and column errors are now 1-indexed (start at line/column 1 rather than 0)
+- **axrepo** mode added to run on kxscm folder structure on disk
 
-
-And many more. Check the [release notes](https://code.kx.com/analyst/release-notes) for the full list.
+And many more. Check the [release notes](https://code.kx.com/analyst/release-notes#v140) for the full list.
 
 
 Getting this repository
